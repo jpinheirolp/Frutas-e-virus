@@ -13,16 +13,16 @@
     </style>
 </head>
 <body style="background-color: #2eb4a9d0;">
-    <h1>pelo menos isso</h1>
+
     <canvas id="tela" width = "1400" height = "900" > </canvas>
 
-    <script>              
+    <script type="module">              
         
         const tela = document.getElementById("tela");
         const contexto = tela.getContext("2d");
 
-        //import jogo from './jogo.js' ;
-        
+        import jogo from './jogo.mjs' ;
+        /*
         const jogo = {
             posicaojogadores: {}, //matriz esparça que diz onde há jogadores
             jogadores: {},       
@@ -98,7 +98,7 @@
                 
             } 
         };
-        
+        */
         const regras = {
             
             Terfome: function () {
@@ -272,4 +272,3 @@
         
     </script>
 </body>
-</html>
