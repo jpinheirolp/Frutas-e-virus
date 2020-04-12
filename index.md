@@ -1,5 +1,4 @@
 # Markdown heading
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,7 @@
     </style>
 </head>
 <body style="background-color: #2eb4a9d0;">
-
+   
     <canvas id="tela" width = "1400" height = "900" > </canvas>
 
     <script type="module">              
@@ -102,7 +101,7 @@
         const regras = {
             
             Terfome: function () {
-                for(nomejogador in jogo.jogadores) {
+                for(const nomejogador in jogo.jogadores) {
                     const auxiliar = jogo.jogadores[nomejogador];
                     if (auxiliar.fome > 0) {
                         auxiliar.fome -= 100;
@@ -136,7 +135,7 @@
                     ArrowLeft: function d() {
                         if(X > 0 && !(jogo.posicaojogadores[`x${X-100}y${Y}`])){
                             auxiliar.x -= 100; 
-                            detectormovimento.Propagar(jogadorn, X , Y)
+                            detectormovimento.Propagar(jogadorn, X , Y);
                         }
                     }
                 }
@@ -175,7 +174,7 @@
             listaDeOuvintes: []
             ,
             Propagar: function propaga(event) {
-                for (funcaoOuvinte of repetidor.listaDeOuvintes) {
+                for (const funcaoOuvinte of repetidor.listaDeOuvintes) {
                     const jogadorn = "jogador1";
                     funcaoOuvinte(event.key,jogadorn); //jogadorn é o jogador do respectivo cliente
                     console.log(event.key);
@@ -198,7 +197,7 @@
                 
             },
             Auxiliapropagar: function auxiliapropagar() {
-                for (funcaoOuvinte of clock.listaDeOuvintes) {
+                for (const funcaoOuvinte of clock.listaDeOuvintes) {
                     funcaoOuvinte();
                 }
             },
@@ -210,7 +209,7 @@
         const detectormovimento = {
             listaDeOuvintes : [],
             Propagar : function(jogadorn,arg1,arg2) {
-                for(funcaoOuvinte of detectormovimento.listaDeOuvintes) {
+                for(const funcaoOuvinte of detectormovimento.listaDeOuvintes) {
                     funcaoOuvinte(jogadorn,arg1,arg2);
                 }
             },
