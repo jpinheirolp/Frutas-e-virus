@@ -54,17 +54,17 @@ const jogo = {
                 const cor =  diconario[n];//usei o resultado aleatório y % x para escolher a cor da fruta ramdomicamente.
                 
                 
-                resultado = {                        
+                const resultado = {                        
                     x: d.x,
                     y: d.y,
                     cor: cor ,
                     
                 };
-                if(jogo.posicaofrutas[`x${x}y${y}`] || jogo.posicaojogadores[`x${x}y${y}`] ) {
+                if(jogo.posicaofrutas[`x${d.x}y${d.y}`] || jogo.posicaojogadores[`x${d.x}y${d.y}`] ) {
                     jogo.funcoes.Gerarfruta();
                 }
                 else {
-                    jogo.posicaofrutas[`x${x}y${y}`] = `fruta${jogo.numeracao.numerofrutas}`;
+                    jogo.posicaofrutas[`x${d.x}y${d.y}`] = `fruta${jogo.numeracao.numerofrutas}`;
                     Object.defineProperty(jogo.frutas, `fruta${jogo.numeracao.numerofrutas}`,{value: resultado, enumerable:true, configurable:true});
                 }
                 
