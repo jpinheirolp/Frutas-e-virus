@@ -1,3 +1,5 @@
+# Markdown heading
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,6 @@
     </style>
 </head>
 <body style="background-color: #2eb4a9d0;">
-   
     <canvas id="tela" width = "1400" height = "900" > </canvas>
 
     <script >              
@@ -22,7 +23,7 @@
         const contexto = tela.getContext("2d");
 
         //import jogo from './jogo.js' ;
-        /*
+        
         const jogo = {
             posicaojogadores: {}, //matriz esparça que diz onde há jogadores
             jogadores: {},       
@@ -98,7 +99,7 @@
                 
             } 
         };
-        */
+        
         const regras = {
             
             Terfome: function () {
