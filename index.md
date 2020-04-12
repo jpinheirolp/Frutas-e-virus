@@ -1,7 +1,5 @@
 # Markdown heading
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,9 +13,10 @@
     </style>
 </head>
 <body style="background-color: #2eb4a9d0;">
+    <h1>pelo menos isso</h1>
     <canvas id="tela" width = "1400" height = "900" > </canvas>
 
-    <script >              
+    <script>              
         
         const tela = document.getElementById("tela");
         const contexto = tela.getContext("2d");
