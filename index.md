@@ -1,8 +1,5 @@
 # Markdown heading
 
-*Aperte as setas para Mover o personagem(quadrado rosa), e coma as frutas para
-aumentar a barra de fome* 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +12,7 @@ aumentar a barra de fome*
 </head>
 
 <body style="background-color: #2eb4a9d0;">
+    <h1>Aperte as setas para Mover o personagem(quadrado rosa), e coma as frutas paraaumentar a barra de fome. </h1>
     <canvas id="tela" width = "1400" height = "900" > </canvas>
     <script type="module">              
         const tela = document.getElementById("tela");
