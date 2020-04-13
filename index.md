@@ -1,25 +1,24 @@
 # Markdown heading
+
+*Aperte as setas para Mover o personagem(quadrado rosa), e coma as frutas para
+aumentar a barra de fome* 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <style>
         #tela{
             border: 1px solid #000;
-            
         }
     </style>
 </head>
-<body style="background-color: #2eb4a9d0;">
-   
-    <canvas id="tela" width = "1400" height = "900" > </canvas>
 
+<body style="background-color: #2eb4a9d0;">
+    <canvas id="tela" width = "1400" height = "900" > </canvas>
     <script type="module">              
-        
         const tela = document.getElementById("tela");
         const contexto = tela.getContext("2d");
-
         import jogo from './jogo.mjs' ;
         /*
         const jogo = {
@@ -31,14 +30,13 @@
                 numerojogadores : 0,
                 numerofrutas: 0,
             },
-            funcoes: {               
+            funcoes: {
                 Atualizaposicaojogadores : function(jogadorn,x0,y0) { //x e y antes da mudança
                     auxiliar = jogo.jogadores[jogadorn];
                     x = auxiliar.x;
                     y = auxiliar.y;
                     delete jogo.posicaojogadores[`x${x0}y${y0}`];
                     jogo.posicaojogadores[`x${x}y${y}`] = jogadorn;
-                    
                 },
                 Gerarjogador : function(nomejogador) {                    
                     if(nomejogador === undefined) {
@@ -64,20 +62,15 @@
                     regras.Movimentar("ArrowDown",nomejogador) // para registrar em posicaojogadores
                 },
                 Gerarfruta : function() { 
-                    
                     diconario = [ "yellow","red","purple","blue","green"];
                     if(Object.keys(jogo.frutas).length  < 20){  //se o tamanho do objeto jogo.frutas for < 20 adicione uma fruta a ele.
                         jogo.numeracao.numerofrutas += 1;
                         x = Math.random() * 1400;
-                        y = Math.random() * 800;                         
-
+                        y = Math.random() * 800;
                         x -= x%100;
                         y -= y%100;
                         n = Math.floor(Math.random() * diconario.length);
-                        
                         cor =  diconario[n];//usei o resultado aleatório y % x para escolher a cor da fruta ramdomicamente.
-                        
-                        
                         resultado = {                        
                             x: x,
                             y: y,
@@ -91,21 +84,17 @@
                             jogo.posicaofrutas[`x${x}y${y}`] = `fruta${jogo.numeracao.numerofrutas}`;
                             Object.defineProperty(jogo.frutas, `fruta${jogo.numeracao.numerofrutas}`,{value: resultado, enumerable:true, configurable:true});
                         }
-                        
                     };
                 },
-                
             } 
         };
         */
         const regras = {
-            
             Terfome: function () {
                 for(const nomejogador in jogo.jogadores) {
                     const auxiliar = jogo.jogadores[nomejogador];
                     if (auxiliar.fome > 0) {
-                        auxiliar.fome -= 100;
-                    
+                        auxiliar.fome -= 100
                     };
                 }
             },
@@ -139,37 +128,29 @@
                         }
                     }
                 }
-
                 const func = auxiliamovimentar[direcao]; 
                 if (direcao in auxiliamovimentar) {
                     func();
                 }
             },
-            
             // tentar impedir q surja uma fruta em cima da outra e passar diretamente X e Y para amenizar bug
-           
             Comerfruta: function(jogadorn) {           // fazer duas tabelas hash, uma pra fruta outra pra jogadores        
                     const auxiliar = jogo.jogadores[jogadorn] 
                     const Y = auxiliar.y; 
-                    const X = auxiliar.x;
-                     
+                    const X = auxiliar.
                      if ( jogo.posicaofrutas[`x${X}y${Y}`] ) {                       
                         const frutan = jogo.posicaofrutas[`x${X}y${Y}`];                       
                         delete jogo.frutas[frutan];             
                         if (auxiliar["fome"] < 800) {
                             auxiliar["fome"] += 100;
-                    
                         };
                         delete jogo.posicaofrutas[`x${X}y${Y}`];
                     }
                 },
-            
             Executar: function () {
-                
                 receptor.Movimentar();
             }
         }
-        
         const repetidor = {        
             listaDeOuvintes: []
             ,
@@ -178,23 +159,19 @@
                     const jogadorn = "jogador1";
                     funcaoOuvinte(event.key,jogadorn); //jogadorn é o jogador do respectivo cliente
                     console.log(event.key);
-
                 }
             },
             AdicionarOuvinte: function adiciona(ouvinte) {
                 repetidor.listaDeOuvintes.push(ouvinte) ;
             }
         };
-        
         document.addEventListener("keydown", repetidor.Propagar);
-        
         const clock = {        
             listaDeOuvintes: []
             ,
             intervalotempo:undefined ,
             Propagar: function propaga() {
                 clock.intervalotempo = setInterval(clock.Auxiliapropagar,1000);
-                
             },
             Auxiliapropagar: function auxiliapropagar() {
                 for (const funcaoOuvinte of clock.listaDeOuvintes) {
@@ -205,7 +182,6 @@
                 clock.listaDeOuvintes.push(ouvinte) ;
             }
         };
-        
         const detectormovimento = {
             listaDeOuvintes : [],
             Propagar : function(jogadorn,arg1,arg2) {
@@ -214,60 +190,35 @@
                 }
             },
             AdicionarOuvinte : function(ouvinte){
-                
                 detectormovimento.listaDeOuvintes.push(ouvinte);
             }
         };
         // observador de colisão é chamado quando a matriz posiçãojogadores é atualizada
         jogo.funcoes.Gerarjogador("jogador1");
-
         clock.AdicionarOuvinte(jogo.funcoes.Gerarfruta);
         clock.AdicionarOuvinte(regras.Terfome);
-
         clock.Propagar();
-        
         repetidor.AdicionarOuvinte(regras.Movimentar);
-        
         detectormovimento.AdicionarOuvinte(jogo.funcoes.Atualizaposicaojogadores);
         detectormovimento.AdicionarOuvinte(regras.Comerfruta);
-
         loop(); 
-
-
-        function loop() {
-                 
+        function loop() { 
                 contexto.clearRect(0,0,1400,800);
-
                 for (const indicefruta in jogo.frutas) {
                     const objeto = jogo.frutas[indicefruta];
-                    
-                    
-
                     contexto.fillStyle = objeto.cor;
                     contexto.fillRect(objeto.x ,objeto.y ,100 ,100);
-                    
                 };
-                
                 for (const indicejogador in jogo.jogadores) {
                     const objeto = jogo.jogadores[indicejogador];
-                
-                
                     contexto.fillStyle = "pink";
                     contexto.fillRect(objeto.x ,objeto.y ,100 ,100);
-
                 };
-                
                 contexto.fillStyle = "black";
                 contexto.fillRect(0, 800 , 1400,100 ); // barrra de fome
                 contexto.fillStyle = "grey";
                 contexto.fillRect(300, 800 ,jogo.jogadores.jogador1.fome,100 ); // barrra de fome
-
             requestAnimationFrame(loop) ;  
         };
-        
-        
-
-
-        
     </script>
 </body>
