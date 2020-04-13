@@ -135,7 +135,7 @@
             Comerfruta: function(jogadorn) {           // fazer duas tabelas hash, uma pra fruta outra pra jogadores        
                     const auxiliar = jogo.jogadores[jogadorn] 
                     const Y = auxiliar.y; 
-                    const X = auxiliar.
+                    const X = auxiliar.x;
                      if ( jogo.posicaofrutas[`x${X}y${Y}`] ) {                       
                         const frutan = jogo.posicaofrutas[`x${X}y${Y}`];                       
                         delete jogo.frutas[frutan];             
