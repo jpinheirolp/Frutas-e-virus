@@ -1,3 +1,5 @@
+function fabricajogo(){
+    
 const jogo = {
     posicaojogadores: {}, //matriz esparça que diz onde há jogadores
     jogadores: {},       
@@ -73,5 +75,6 @@ const jogo = {
         
     } 
 };
-
-export default jogo;
+return jogo;
+};
+export default fabricajogo;

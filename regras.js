@@ -1,4 +1,5 @@
 //mudei
+function fabricaregras(jogo,detectormovimento) {
 const regras = {
             
     Terfome: function () {
@@ -70,4 +71,6 @@ const regras = {
         receptor.Movimentar();
     }
 }
-export default regras;
+return regras;
+}
+export default fabricaregras;
