@@ -1,0 +1,23 @@
+{
+  "name": "joguin_coronga",
+  "version": "1.0.0",
+  "description": "",
+  "main": "teste.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpinheirolp/Frutas-e-v-rus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpinheirolp/Frutas-e-v-rus/issues"
+  },
+  "homepage": "https://github.com/jpinheirolp/Frutas-e-v-rus#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
