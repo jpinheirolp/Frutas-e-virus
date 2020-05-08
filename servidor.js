@@ -6,7 +6,7 @@ const socketio = require("socket.io");
 const io = socketio(servidor);
 var PORT = 3000;
 
-app.use("/",express.static("frentend"))
+app.use("/",express.static("frontend"))
 
 app.get("/",(req,res) => {
     res.send("foi");

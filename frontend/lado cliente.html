@@ -13,14 +13,13 @@
     </style>
 </head>
 <script src="/socket.io/socket.io.js"> </script>
-<script>
-    const socket = io();
-</script>
+
 <body style="background-color: #2eb4a9d0;">
    
     <canvas id="tela" width = "1400" height = "900" > </canvas>
 
     <script type="module">              
+        const socket = io();
         
         const tela = document.getElementById("tela");
         const contexto = tela.getContext("2d");
@@ -39,7 +38,7 @@
         
         import fabricaclock from './clock.js';
         
-        const clock = fabricaclock();
+        const clock1s = fabricaclock(1000);
         
         import fabricadetectormovimento from './detectormovimento.js';
 
@@ -51,10 +50,10 @@
         
         jogo.funcoes.Gerarjogador("jogador1");
 
-        clock.AdicionarOuvinte(jogo.funcoes.Gerarfruta);
-        clock.AdicionarOuvinte(regras.Terfome);
+        clock1s.AdicionarOuvinte(jogo.funcoes.Gerarfruta);
+        clock1s.AdicionarOuvinte(regras.Terfome);
 
-        clock.Propagar();
+        clock1s.Propagar();
         
         repetidor.AdicionarOuvinte(regras.Movimentar);
         

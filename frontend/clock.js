@@ -1,10 +1,10 @@
-function fabricaclock() {
+function fabricaclock(periodoms) {
 const clock = {        
     listaDeOuvintes: []
     ,
     intervalotempo:undefined ,
     Propagar: function propaga() {
-        clock.intervalotempo = setInterval(clock.Auxiliapropagar,1000);
+        clock.intervalotempo = setInterval(clock.Auxiliapropagar,periodoms);
         
     },
     Auxiliapropagar: function auxiliapropagar() {
