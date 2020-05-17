@@ -18,4 +18,4 @@ const clock = {
 };
 return clock;
 };
-export default fabricaclock;
+module.exports = fabricaclock;

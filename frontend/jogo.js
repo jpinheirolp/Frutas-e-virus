@@ -24,7 +24,8 @@ const jogo = {
             }
             console.log(nomejogador)
             if(jogo.jogadores[nomejogador]) {
-                throw Error("esse nome já existe, ecolha outro seu cabeça de alpaca");                       
+                console.log("esse nome já existe, ecolha outro seu cabeça de alpaca");                       
+                return 0;
             }
             jogo.numeracao.numerojogadores += 1;
             const d = {x:Math.random() * 1300, 
@@ -77,4 +78,4 @@ const jogo = {
 };
 return jogo;
 };
-export default fabricajogo;
+module.exports = fabricajogo;

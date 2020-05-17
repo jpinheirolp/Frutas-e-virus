@@ -16,4 +16,4 @@ const repetidor = {
 };
 return repetidor;
 };
-export default fabricarepetidor;
+module.exports = fabricarepetidor;

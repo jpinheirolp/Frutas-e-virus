@@ -24,12 +24,7 @@ function pintatela(contexto,jogo) {
     contexto.fillStyle = "black";
     contexto.fillRect(0, 800 , 1400,100 ); // barrra de fome
     contexto.fillStyle = "grey";
-    contexto.fillRect(300, 800 ,jogo.jogadores.jogador1.fome,100 ); // barrra de fome
+    contexto.fillRect(300, 800 ,jogo.jogadores.jogador13.fome,100 ); // barrra de fome *temos um proberma
 
-    function loop() {
-        pintatela(contexto,jogo);
-    };
-
-    requestAnimationFrame(loop)
 };
 export default pintatela;

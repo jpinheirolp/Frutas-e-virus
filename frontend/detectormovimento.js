@@ -13,4 +13,4 @@ function fabricadetectormovimento() {
     };
     return detectormovimento;
 };
-export default fabricadetectormovimento;
+module.exports = fabricadetectormovimento;

@@ -20,52 +20,25 @@
 
     <script type="module">              
         const socket = io();
+        var jogo ;
+        
         
         const tela = document.getElementById("tela");
         const contexto = tela.getContext("2d");
 
-        import fabricajogo from './jogo.js' ;
-        
-        const jogo = fabricajogo();
-        
-        import fabricaregras from './regras.js';
-        
-        import fabricarepetidor from './repetidor.js';
-        
-        const repetidor = fabricarepetidor();
-        
-        document.addEventListener("keydown", repetidor.Propagar);
-        
-        import fabricaclock from './clock.js';
-        
-        const clock1s = fabricaclock(1000);
-        
-        import fabricadetectormovimento from './detectormovimento.js';
-
-        const detectormovimento = fabricadetectormovimento();
-
-        const regras = fabricaregras(jogo,detectormovimento);
-        
-        // observador de colisão é chamado quando a matriz posiçãojogadores é atualizada
-        
-        jogo.funcoes.Gerarjogador("jogador1");
-
-        clock1s.AdicionarOuvinte(jogo.funcoes.Gerarfruta);
-        clock1s.AdicionarOuvinte(regras.Terfome);
-
-        clock1s.Propagar();
-        
-        repetidor.AdicionarOuvinte(regras.Movimentar);
-        
-        detectormovimento.AdicionarOuvinte(jogo.funcoes.Atualizaposicaojogadores);
-        detectormovimento.AdicionarOuvinte(regras.Comerfruta);
-
         import pintatela from './pintatela.js';
 
-        pintatela(contexto,jogo);
-         
+        socket.on("jogatina",(estado) => {                      
+            jogo = estado;
+            pintatela(contexto,jogo);
 
+        })
+        const emitir = (event) => {
+            socket.emit("jogatina", event.key);
+        }
+        document.addEventListener("keydown", emitir);
 
+        
         
     </script>
 </body>

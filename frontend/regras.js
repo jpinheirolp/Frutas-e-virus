@@ -73,4 +73,4 @@ const regras = {
 }
 return regras;
 }
-export default fabricaregras;
+module.exports = fabricaregras;

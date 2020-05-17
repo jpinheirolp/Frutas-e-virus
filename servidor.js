@@ -12,8 +12,47 @@ app.get("/",(req,res) => {
     res.send("foi");
 })
 
+    const fabricajogo = require("./frontend/jogo.js") ;
+        
+    const jogo = fabricajogo();
+        
+    const fabricaregras = require('./frontend/regras.js');
+        
+    const fabricaclock = require('./frontend/clock.js');
+        
+    const clock1fps = fabricaclock(1000);
+        
+    const fabricadetectormovimento = require('./frontend/detectormovimento.js');
+
+    const detectormovimento = fabricadetectormovimento();
+
+    const regras = fabricaregras(jogo,detectormovimento);
+        
+        // observador de colisão é chamado quando a matriz posiçãojogadores é atualizada
+
+    clock1fps.AdicionarOuvinte(jogo.funcoes.Gerarfruta);
+    clock1fps.AdicionarOuvinte(regras.Terfome);
+
+    clock1fps.Propagar();
+        
+    detectormovimento.AdicionarOuvinte(jogo.funcoes.Atualizaposicaojogadores);
+    detectormovimento.AdicionarOuvinte(regras.Comerfruta);
+
 io.on("connection",(socket) => {
-    console.log("conexão bem sucedida")
+    
+    jogo.funcoes.Gerarjogador("jogador13");
+    
+    console.log(`conexão bem sucedida com "${socket.id}"` );
+    auxiliaEmissao = () => {
+        io.emit("jogatina",jogo);
+    }
+    setInterval(auxiliaEmissao,25);
+    socket.on("jogatina", (tecla) => {
+        regras.Movimentar(tecla,"jogador13");
+    })
+    socket.on("disconnect", () => {
+        console.log("usuário nos deixou {8( ");
+    })
 }); 
 
 
