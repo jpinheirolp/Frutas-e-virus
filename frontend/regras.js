@@ -7,11 +7,16 @@ const regras = {
             const auxiliar = jogo.jogadores[nomejogador];
             if (auxiliar.fome > 0) {
                 auxiliar.fome -= 100;
-            
+            }
+            else {
+            jogo.funcoes.Deletajogador(nomejogador);
             };
-        }
+        };
     },
     Movimentar: function(direcao,jogadorn) {
+        if(!jogo.jogadores[jogadorn]) {
+            return 0;
+        }
         const auxiliar = jogo.jogadores[jogadorn] 
         const Y = auxiliar.y;
         const X = auxiliar.x;

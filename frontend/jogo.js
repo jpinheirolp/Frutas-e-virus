@@ -42,6 +42,13 @@ const jogo = {
             Object.defineProperty(jogo.jogadores, nomejogador,{value: resultado,enumerable:true, configurable:true});
             //regras.Movimentar("ArrowDown",nomejogador) // para registrar em posicaojogadores
         },
+        Deletajogador: function(jogadorn) {           // fazer duas tabelas hash, uma pra fruta outra pra jogadores        
+            const auxiliar = jogo.jogadores[jogadorn];
+            const Y = auxiliar.y; 
+            const X = auxiliar.x;
+            delete jogo.jogadores[jogadorn]; 
+            delete jogo.posicaojogadores[`x${X}y${Y}`];   
+        },
         Gerarfruta : function() { 
             
             const diconario = [ "yellow","red","purple","blue","green"];
