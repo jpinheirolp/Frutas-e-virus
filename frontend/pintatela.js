@@ -1,4 +1,4 @@
-function pintatela(contexto,jogo) {
+function pintatela(contexto,jogo,jogadorn) {
                  
     contexto.clearRect(0,0,1400,800);
 
@@ -18,13 +18,13 @@ function pintatela(contexto,jogo) {
     
         contexto.fillStyle = "pink";
         contexto.fillRect(objeto.x ,objeto.y ,100 ,100);
-
+   
     };
     
     contexto.fillStyle = "black";
     contexto.fillRect(0, 800 , 1400,100 ); // barrra de fome
     contexto.fillStyle = "grey";
-    contexto.fillRect(300, 800 ,jogo.jogadores.jogador13.fome,100 ); // barrra de fome *temos um proberma
+    contexto.fillRect(300, 800 ,jogo.jogadores[jogadorn].fome,100 ); // barrra de fome *temos um proberma
 
 };
 export default pintatela;

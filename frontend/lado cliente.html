@@ -30,11 +30,12 @@
 
         socket.on("jogatina",(estado) => {                      
             jogo = estado;
-            pintatela(contexto,jogo);
+            pintatela(contexto,jogo,socket.id);
 
         })
         const emitir = (event) => {
             socket.emit("jogatina", event.key);
+        
         }
         document.addEventListener("keydown", emitir);
 

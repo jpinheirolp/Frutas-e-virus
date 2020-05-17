@@ -40,7 +40,7 @@ app.get("/",(req,res) => {
 
 io.on("connection",(socket) => {
     
-    jogo.funcoes.Gerarjogador("jogador13");
+    jogo.funcoes.Gerarjogador(socket.id);
     
     console.log(`conexão bem sucedida com "${socket.id}"` );
     auxiliaEmissao = () => {
@@ -48,7 +48,7 @@ io.on("connection",(socket) => {
     }
     setInterval(auxiliaEmissao,25);
     socket.on("jogatina", (tecla) => {
-        regras.Movimentar(tecla,"jogador13");
+        regras.Movimentar(tecla,socket.id);
     })
     socket.on("disconnect", () => {
         console.log("usuário nos deixou {8( ");
