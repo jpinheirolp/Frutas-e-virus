@@ -11,10 +11,13 @@ app.use("/",express.static("frontend"))
 app.get("/",(req,res) => {
     res.send("foi");
 })
+    const geratela = require("./frontend/tela.js");
+
+    const interfacetela = geratela();
 
     const fabricajogo = require("./frontend/jogo.js") ;
         
-    const jogo = fabricajogo();
+    const jogo = fabricajogo(interfacetela);
         
     const fabricaregras = require('./frontend/regras.js');
         
@@ -26,7 +29,7 @@ app.get("/",(req,res) => {
 
     const detectormovimento = fabricadetectormovimento();
 
-    const regras = fabricaregras(jogo,detectormovimento);
+    const regras = fabricaregras(jogo,detectormovimento,interfacetela);
         
         // observador de colisão é chamado quando a matriz posiçãojogadores é atualizada
 
@@ -40,6 +43,12 @@ app.get("/",(req,res) => {
 
 io.on("connection",(socket) => {
     
+    auxiliaEmissaoTela = () => {
+        io.emit("inicio",interfacetela);
+    }
+    
+    setTimeout(auxiliaEmissaoTela,100);
+
     jogo.funcoes.Gerarjogador(socket.id);
     
     console.log(`conexão bem sucedida com "${socket.id}"` );

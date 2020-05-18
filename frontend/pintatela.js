@@ -4,8 +4,6 @@ function pintatela(contexto,jogo,jogadorn) {
 
     for (const indicefruta in jogo.frutas) {
         const objeto = jogo.frutas[indicefruta];
-        
-        
 
         contexto.fillStyle = objeto.cor;
         contexto.fillRect(objeto.x ,objeto.y ,100 ,100);
@@ -24,7 +22,8 @@ function pintatela(contexto,jogo,jogadorn) {
     contexto.fillStyle = "black";
     contexto.fillRect(0, 800 , 1400,100 ); // barrra de fome
     contexto.fillStyle = "grey";
+    if(jogo.jogadores[jogadorn]){
     contexto.fillRect(300, 800 ,jogo.jogadores[jogadorn].fome,100 ); // barrra de fome *temos um proberma
-
+    }
 };
 export default pintatela;

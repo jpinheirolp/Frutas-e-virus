@@ -21,8 +21,11 @@
     <script type="module">              
         const socket = io();
         var jogo ;
-        
-        
+        var interfacetela;
+        socket.on("inicio",(conteudo) => {
+            interfacetela = conteudo;
+            console.log(interfacetela);
+        })       
         const tela = document.getElementById("tela");
         const contexto = tela.getContext("2d");
 

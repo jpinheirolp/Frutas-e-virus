@@ -1,5 +1,7 @@
 //mudei
-function fabricaregras(jogo,detectormovimento) {
+function fabricaregras(jogo,detectormovimento,interfacetela) {
+const larguratela = interfacetela.RetornaLargura();
+const alturatela = interfacetela.RetornaAltura();
 const regras = {
             
     Terfome: function () {
@@ -22,7 +24,7 @@ const regras = {
         const X = auxiliar.x;
         const auxiliamovimentar = {
             ArrowDown: function a() {
-                if(Y < 700 && !(jogo.posicaojogadores[`x${X}y${Y+100}`])) {
+                if(Y < (alturatela - 1) && !(jogo.posicaojogadores[`x${X}y${Y+100}`])) {
                     auxiliar.y += 100; 
                     detectormovimento.Propagar(jogadorn, X, Y)
                 }
@@ -34,7 +36,7 @@ const regras = {
                 }
             },
             ArrowRight: function c() {
-                if(X < 1300 && !(jogo.posicaojogadores[`x${X+100}y${Y}`])){
+                if(X < (larguratela - 1) && !(jogo.posicaojogadores[`x${X+100}y${Y}`])){
                     auxiliar.x += 100; 
                     detectormovimento.Propagar(jogadorn, X , Y)
                 }

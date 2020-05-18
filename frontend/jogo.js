@@ -1,5 +1,6 @@
-function fabricajogo(){
-    
+function fabricajogo(interfacetela){
+const larguratela = interfacetela.RetornaLargura();
+const alturatela = interfacetela.RetornaAltura();
 const jogo = {
     posicaojogadores: {}, //matriz esparça que diz onde há jogadores
     jogadores: {},       
@@ -28,9 +29,9 @@ const jogo = {
                 return 0;
             }
             jogo.numeracao.numerojogadores += 1;
-            const d = {x:Math.random() * 1300, 
-                       y:Math.random() * 700};   
-            
+            const d = {x:Math.random() * (larguratela - 1), 
+                       y:Math.random() * (alturatela - 1)};  
+
             d.x -= d.x%100;
             d.y -= d.y%100;
             const fome = 800;
@@ -54,9 +55,9 @@ const jogo = {
             const diconario = [ "yellow","red","purple","blue","green"];
             if(Object.keys(jogo.frutas).length  < 20){  //se o tamanho do objeto jogo.frutas for < 20 adicione uma fruta a ele.
                 jogo.numeracao.numerofrutas += 1;
-                const d = {x:Math.random() * 1300, 
-                           y:Math.random() * 700};                           
-
+                const d = {x:Math.random() * (larguratela - 1) , 
+                           y:Math.random() * (alturatela - 1) };                           
+                
                 d.x -= d.x%100;
                 d.y -= d.y%100;
                 const n = Math.floor(Math.random() * diconario.length);
