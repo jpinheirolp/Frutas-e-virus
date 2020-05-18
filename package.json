@@ -1,6 +1,7 @@
 {
   "name": "joguin_coronga",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "servidor.js",
   "scripts": {

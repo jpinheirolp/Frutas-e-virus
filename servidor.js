@@ -1,8 +1,12 @@
-const express = require("express");
+import express from "express";
+//const express = require("express");
 const app = express();
-const http = require("http");
+import http from "http";
+//const http = require("http");
 const servidor = http.createServer(app);
-const socketio = require("socket.io");
+
+import socketio from "socket.io";
+//const socketio = require("socket.io");
 const io = socketio(servidor);
 var PORT = 3000;
 
@@ -11,21 +15,26 @@ app.use("/",express.static("frontend"))
 app.get("/",(req,res) => {
     res.send("foi");
 })
-    const geratela = require("./frontend/tela.js");
+    // const geratela = require("./frontend/tela.js");
+    import geratela from "./frontend/tela.mjs";
 
     const interfacetela = geratela();
 
-    const fabricajogo = require("./frontend/jogo.js") ;
+    import  fabricajogo from "./frontend/jogo.js";
+    //const fabricajogo = require("./frontend/jogo.js") ;
         
     const jogo = fabricajogo(interfacetela);
-        
-    const fabricaregras = require('./frontend/regras.js');
-        
-    const fabricaclock = require('./frontend/clock.js');
+
+    import  fabricaregras from "./frontend/regras.js";
+    //const fabricaregras = require('./frontend/regras.js');
+
+    import  fabricaclock from "./frontend/clock.js";        
+    //const fabricaclock = require('./frontend/clock.js');
         
     const clock1fps = fabricaclock(1000);
-        
-    const fabricadetectormovimento = require('./frontend/detectormovimento.js');
+
+    import  fabricadetectormovimento from "./frontend/detectormovimento.js";       
+    //const fabricadetectormovimento = require('./frontend/detectormovimento.js');
 
     const detectormovimento = fabricadetectormovimento();
 
@@ -43,16 +52,10 @@ app.get("/",(req,res) => {
 
 io.on("connection",(socket) => {
     
-    auxiliaEmissaoTela = () => {
-        io.emit("inicio",interfacetela);
-    }
-    
-    setTimeout(auxiliaEmissaoTela,100);
-
     jogo.funcoes.Gerarjogador(socket.id);
     
     console.log(`conexão bem sucedida com "${socket.id}"` );
-    auxiliaEmissao = () => {
+    const auxiliaEmissao = () => {
         io.emit("jogatina",jogo);
     }
     setInterval(auxiliaEmissao,25);

@@ -80,4 +80,5 @@ const regras = {
 }
 return regras;
 }
-module.exports = fabricaregras;
+//module.exports = fabricaregras;
+export default fabricaregras;

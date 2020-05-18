@@ -86,4 +86,5 @@ const jogo = {
 };
 return jogo;
 };
-module.exports = fabricajogo;
+//module.exports = fabricajogo;
+export default fabricajogo;

@@ -6,7 +6,7 @@
     <title>Document</title>
 
     <style>
-        #tela{
+        #Tela{
             border: 1px solid #000;
             
         }
@@ -16,20 +16,20 @@
 
 <body style="background-color: #2eb4a9d0;">
    
-    <canvas id="tela" width = "1400" height = "900" > </canvas>
+    <canvas id="Tela" width = "1400" height = "900" > </canvas>
 
     <script type="module">              
         const socket = io();
         var jogo ;
-        var interfacetela;
-        socket.on("inicio",(conteudo) => {
-            interfacetela = conteudo;
-            console.log(interfacetela);
-        })       
-        const tela = document.getElementById("tela");
+        
+        const tela = document.getElementById("Tela");
         const contexto = tela.getContext("2d");
 
+        import geratela from "./tela.mjs";
+        const interfacetela = geratela();
+        console.log(interfacetela)
         import pintatela from './pintatela.js';
+
 
         socket.on("jogatina",(estado) => {                      
             jogo = estado;
