@@ -24,16 +24,21 @@
         
         const tela = document.getElementById("Tela");
         const contexto = tela.getContext("2d");
-
+        const dimensoescanvas = {altura: Tela.clientHeight, largura: Tela.clientWidth};
+        
         import geratela from "./tela.mjs";
         const interfacetela = geratela();
-        console.log(interfacetela)
+        const alturatela = interfacetela.RetornaAltura();
+        const larguratela = interfacetela.RetornaLargura();
+        const unidadecomprimento = Math.floor(Math.min( Tela.clientWidth/larguratela , Tela.clientHeight/alturatela ));
+        console.log(unidadecomprimento);
+        
         import pintatela from './pintatela.js';
 
 
         socket.on("jogatina",(estado) => {                      
             jogo = estado;
-            pintatela(contexto,jogo,socket.id);
+            pintatela(contexto,jogo,socket.id,dimensoescanvas,unidadecomprimento);
 
         })
         const emitir = (event) => {

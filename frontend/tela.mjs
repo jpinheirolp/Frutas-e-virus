@@ -1,5 +1,5 @@
 function Geratela() {
-    const tela = {largura : 1301, altura : 701} ; //    70/40 
+    const tela = {largura : 70, altura : 40} ; //    1301/ 701
     const Interfacetela = {
         AlteraAltura : function alteraaltura(valor) {
         tela.altura = valor;

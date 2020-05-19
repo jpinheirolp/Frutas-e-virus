@@ -24,26 +24,26 @@ const regras = {
         const X = auxiliar.x;
         const auxiliamovimentar = {
             ArrowDown: function a() {
-                if(Y < (alturatela - 1) && !(jogo.posicaojogadores[`x${X}y${Y+100}`])) {
-                    auxiliar.y += 100; 
+                if(Y < (alturatela - 1) && !(jogo.posicaojogadores[`x${X}y${Y+1}`])) {
+                    auxiliar.y += 1; 
                     detectormovimento.Propagar(jogadorn, X, Y)
                 }
             },
             ArrowUp: function b() {
-                if(Y > 0 && !(jogo.posicaojogadores[`x${X}y${Y-100}`])){
-                    auxiliar.y -= 100; 
+                if(Y > 0 && !(jogo.posicaojogadores[`x${X}y${Y-1}`])){
+                    auxiliar.y -= 1; 
                     detectormovimento.Propagar(jogadorn, X , Y )
                 }
             },
             ArrowRight: function c() {
-                if(X < (larguratela - 1) && !(jogo.posicaojogadores[`x${X+100}y${Y}`])){
-                    auxiliar.x += 100; 
+                if(X < (larguratela - 1) && !(jogo.posicaojogadores[`x${X+1}y${Y}`])){
+                    auxiliar.x += 1; 
                     detectormovimento.Propagar(jogadorn, X , Y)
                 }
             },
             ArrowLeft: function d() {
-                if(X > 0 && !(jogo.posicaojogadores[`x${X-100}y${Y}`])){
-                    auxiliar.x -= 100; 
+                if(X > 0 && !(jogo.posicaojogadores[`x${X-1}y${Y}`])){
+                    auxiliar.x -= 1; 
                     detectormovimento.Propagar(jogadorn, X , Y);
                 }
             }

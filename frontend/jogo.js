@@ -29,11 +29,13 @@ const jogo = {
                 return 0;
             }
             jogo.numeracao.numerojogadores += 1;
-            const d = {x:Math.random() * (larguratela - 1), 
-                       y:Math.random() * (alturatela - 1)};  
+            const d = {x:Math.random() * larguratela , 
+                       y:Math.random() * alturatela };  
 
-            d.x -= d.x%100;
-            d.y -= d.y%100;
+            //d.x -= d.x%100;
+            //d.y -= d.y%100;
+            d.x = Math.floor(d.x);
+            d.y = Math.floor(d.y)
             const fome = 800;
             const resultado = {                        
                 x: d.x,
@@ -53,13 +55,15 @@ const jogo = {
         Gerarfruta : function() { 
             
             const diconario = [ "yellow","red","purple","blue","green"];
-            if(Object.keys(jogo.frutas).length  < 20){  //se o tamanho do objeto jogo.frutas for < 20 adicione uma fruta a ele.
+            if(Object.keys(jogo.frutas).length  < 100){  //se o tamanho do objeto jogo.frutas for < 20 adicione uma fruta a ele.
                 jogo.numeracao.numerofrutas += 1;
-                const d = {x:Math.random() * (larguratela - 1) , 
-                           y:Math.random() * (alturatela - 1) };                           
+                const d = {x:Math.random() * larguratela  , 
+                           y:Math.random() * alturatela  };                           
                 
-                d.x -= d.x%100;
-                d.y -= d.y%100;
+                //d.x -= d.x%100;
+                //d.y -= d.y%100;
+                d.x = Math.floor(d.x);
+                d.y = Math.floor(d.y);
                 const n = Math.floor(Math.random() * diconario.length);
                 
                 const cor =  diconario[n];//usei o resultado aleatório y % x para escolher a cor da fruta ramdomicamente.
